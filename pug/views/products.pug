@@ -1,0 +1,33 @@
+html
+    head
+        title='Desafío 5'
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous")
+    body
+        div(class="container mt-5")
+            div(class="row justify-content-center")
+                h1(class="text-center") Productos
+        div(class="container mt-5")
+            div(class="row justify-content-center mb-4")
+                div(class="col-8 text-end")
+                    a(class="btn btn-secondary rounded-0" href="/") Agregá un producto nuevo
+            if exists
+                div(class="row justify-content-center")
+                    div(class="col-8 mt-3")
+                        table(class="table table-hover")
+                            thead(class="thead-dark")
+                                tr
+                                    th(scope="col") Nombre
+                                    th(scope="col") Precio 
+                                    th(scope="col" class="w-25") Foto
+                            tbody
+                                each prod in all
+                                    tr 
+                                        th(scope="row" class="align-middle")= prod.title
+                                        td(class="align-middle")= prod.price
+                                        td
+                                            div(class="w-75")
+                                                img(src=prod.thumbnail alt="Imagen de un producto" class="w-50")
+            else
+                div(class="row justify-content-center mt-5")
+                    div(class="col-8 text-center")
+                        h2 No hay productos
